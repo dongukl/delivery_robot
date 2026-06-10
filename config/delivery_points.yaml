@@ -1,0 +1,28 @@
+delivery_points:
+  - id: "A"
+    name: "출발지"
+    x: 0.809
+    y: 1.984
+    yaw: 0.0
+
+  - id: "B"
+    name: "1번 배달지"
+    x: -4.320
+    y: 0.405
+    yaw: 0.0
+
+  - id: "C"
+    name: "2번 배달지"
+    x: 2.987
+    y: 4.599
+    yaw: 0.0
+
+  - id: "D"
+    name: "3번 배달지"
+    x: 7.440
+    y: -2.799
+    yaw: 0.0
+
+mission_sequence: ["B", "C", "D", "A"]
+max_retries: 3
+retry_wait_sec: 5.0
