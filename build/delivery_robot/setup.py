@@ -1,1 +1,0 @@
-/home/donguk/delivery_robot/src/delivery_robot/setup.py
