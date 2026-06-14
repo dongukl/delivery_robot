@@ -3,6 +3,7 @@ from rclpy.node import Node
 import yaml
 import time
 
+from delivery_robot.metrics_logger import MetricsLogger
 from delivery_robot.nav2_client import Nav2Client
 from delivery_robot.state_machine import StateMachine, DeliveryState
 
@@ -39,6 +40,7 @@ class MissionManager(Node):
 
         self.sm = StateMachine(self.get_logger())
         self.nav = Nav2Client(self)
+        self.metrics = MetricsLogger(self.get_logger())
 
         self.timer = self.create_timer(0.5, self.run_loop)
 
@@ -62,6 +64,10 @@ class MissionManager(Node):
         elif state == DeliveryState.ARRIVED:
             name = self.sequence[self.current_idx]['name']
             self.get_logger().info(f'도착: {name}')
+            self.metrics.record_arrival(          # ← 추가
+                self.sequence[self.current_idx]['id'],
+                self.retry_count
+            )
             self.sm.transition(DeliveryState.WAITING)
 
             # 3초 대기 >> 배달 전달
@@ -86,6 +92,10 @@ class MissionManager(Node):
                 self.get_logger().error(
                     f'최대 재시도 초과 - {name}스킵'
                 )
+                self.metrics.record_skip(             
+                    self.sequence[self.current_idx]['id'],
+                    self.retry_count
+                )    
                 self.current_idx += 1
                 self.retry_count = 0
                 self.sm.transition(DeliveryState.IDLE)
@@ -93,6 +103,7 @@ class MissionManager(Node):
         elif state == DeliveryState.MISSION_DONE:
             self.get_logger().info('=' * 40)
             self.get_logger().info('전체 미션 완료')
+            self.metrics.save()
             self.get_logger().info('=' * 40)
             # 타이머 종료
             self.timer.cancel()
@@ -103,7 +114,8 @@ class MissionManager(Node):
             f'이동 시작 : {pt["name"]}'
             f'({pt["x"]:.2f}, {pt["y"]:.2f})'
         )
-        
+        self.metrics.record_departure(pt['id'])
+
         self.sm.transition(DeliveryState.MOVING)
 
         self.nav.send_goal(
