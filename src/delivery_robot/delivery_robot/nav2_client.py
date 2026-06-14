@@ -1,6 +1,3 @@
-import rclpy
-from rclpy.node import Node
-
 from rclpy.action import ActionClient
 from nav2_msgs.action import NavigateToPose
 # 특정 좌표로 이동하라는 명령
@@ -11,10 +8,15 @@ from geometry_msgs.msg import PoseStamped
 from action_msgs.msg import GoalStatus
 import math # yaw -> quaternaion 변환
 
-class Nav2Client(Node):
-    def __init__(self):
-        super().__init__('nav2_client')
-        self._client = ActionClient(self, NavigateToPose, 'navigate_to_pose')
+class Nav2Client():
+    """
+    Node 상속 제거
+    MissionManager 노드를 직접 받아서 액션 클라이언트를 생성하면
+    spin 안에서 콜백이 정상적으로 실행됨
+    """
+    def __init__(self, node):
+        self._node = node
+        self._client = ActionClient(node, NavigateToPose, 'navigate_to_pose')
         # 'navigate_to_pose' : Nav2 액션 서버 이름 (고정값, 바꾸면 안 됨)
 
         self._current_goal_handle = None
@@ -27,7 +29,7 @@ class Nav2Client(Node):
         on_result_callback : 이동 완료/실패 시 호출할 콜백 함수 
         '''
 
-        self.get_logger().info(f'목적지 전송 : x = {x:.2f}, y = {y:.2f}')
+        self._node.get_logger().info(f'목적지 전송 : x = {x:.2f}, y = {y:.2f}')
         while not self._client.wait_for_server(timeout_sec=1.0):
             self.get_logger().info('Waiting server ...')
 
@@ -57,7 +59,7 @@ class Nav2Client(Node):
          
         pose = PoseStamped()
         pose.header.frame_id = 'map'
-        pose.header.stamp = self.get_clock().now().to_msg()
+        pose.header.stamp = self._node.get_clock().now().to_msg()
         pose.pose.position.x = x
         pose.pose.position.y = y
 
@@ -77,7 +79,7 @@ class Nav2Client(Node):
         goal_handle = future.result()
 
         if not goal_handle.accepted:
-            self.get_logger().warn('Nav2가 목표 거부')
+            self._node.get_logger().warn('Nav2가 목표 거부')
             on_result_callback(success=False)
             return
         
@@ -92,9 +94,9 @@ class Nav2Client(Node):
         status = future.result().status
         success = (status == GoalStatus.STATUS_SUCCEEDED)
 
-        self.get_logger().info(f'주행 결과: {"성공" if success else "실패"} (status={status})')
+        self._node.get_logger().info(f'주행 결과: {"성공" if success else "실패"} (status={status})')
         on_result_callback(success=success)
 
     def _feedback_callback(self, feedback_msg):
         dist = feedback_msg.feedback.distance_remaining
-        self.get_logger().info(f'남은 거리 : {dist:.2f}m, throttle_duration_sec=2.0')
+        self._node.get_logger().info(f'남은 거리 : {dist:.2f}m, throttle_duration_sec=2.0')

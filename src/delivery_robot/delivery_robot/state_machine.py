@@ -39,6 +39,7 @@ class StateMachine:
 
 
     def transition(self, new_state: DeliveryState):
+        # 상태를 변경하는 메서드
         self.logger.info(f'상태 전환: {self.state.name} -> {new_state.name}')
         self.state = new_state
 

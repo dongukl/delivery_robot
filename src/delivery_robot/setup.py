@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'mission = delivery_robot.mission_manager:main'
         ],
     },
 )

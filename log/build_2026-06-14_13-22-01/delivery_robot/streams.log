@@ -1,0 +1,24 @@
+[0.956s] Invoking command in '/home/donguk/delivery_robot/build/delivery_robot': PYTHONPATH=/home/donguk/delivery_robot/build/delivery_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/donguk/delivery_robot/install/delivery_robot/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/donguk/delivery_robot/build/delivery_robot/build --no-deps symlink_data
+[1.367s] running develop
+[1.661s] running egg_info
+[1.661s] creating delivery_robot.egg-info
+[1.661s] writing delivery_robot.egg-info/PKG-INFO
+[1.661s] writing dependency_links to delivery_robot.egg-info/dependency_links.txt
+[1.661s] writing entry points to delivery_robot.egg-info/entry_points.txt
+[1.662s] writing requirements to delivery_robot.egg-info/requires.txt
+[1.662s] writing top-level names to delivery_robot.egg-info/top_level.txt
+[1.662s] writing manifest file 'delivery_robot.egg-info/SOURCES.txt'
+[1.664s] reading manifest file 'delivery_robot.egg-info/SOURCES.txt'
+[1.664s] writing manifest file 'delivery_robot.egg-info/SOURCES.txt'
+[1.666s] running build_ext
+[1.666s] Creating /home/donguk/delivery_robot/install/delivery_robot/lib/python3.10/site-packages/delivery-robot.egg-link (link to .)
+[1.667s] Installing mission script to /home/donguk/delivery_robot/install/delivery_robot/lib/delivery_robot
+[1.667s] 
+[1.667s] Installed /home/donguk/delivery_robot/build/delivery_robot
+[1.667s] running symlink_data
+[1.668s] creating /home/donguk/delivery_robot/install/delivery_robot/share/ament_index
+[1.668s] creating /home/donguk/delivery_robot/install/delivery_robot/share/ament_index/resource_index
+[1.668s] creating /home/donguk/delivery_robot/install/delivery_robot/share/ament_index/resource_index/packages
+[1.668s] symbolically linking /home/donguk/delivery_robot/build/delivery_robot/resource/delivery_robot -> /home/donguk/delivery_robot/install/delivery_robot/share/ament_index/resource_index/packages
+[1.668s] symbolically linking /home/donguk/delivery_robot/build/delivery_robot/package.xml -> /home/donguk/delivery_robot/install/delivery_robot/share/delivery_robot
+[1.695s] Invoked command in '/home/donguk/delivery_robot/build/delivery_robot' returned '0': PYTHONPATH=/home/donguk/delivery_robot/build/delivery_robot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/donguk/delivery_robot/install/delivery_robot/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/donguk/delivery_robot/build/delivery_robot/build --no-deps symlink_data

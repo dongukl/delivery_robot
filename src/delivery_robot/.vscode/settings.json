@@ -1,0 +1,31 @@
+{
+    "ROS2.distro": "humble",
+    "python.autoComplete.extraPaths": [
+        "/home/donguk/turtlebot3_ws/build/turtlebot3_teleop",
+        "/home/donguk/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.10/site-packages",
+        "/home/donguk/turtlebot3_ws/build/turtlebot3_example",
+        "/home/donguk/turtlebot3_ws/install/turtlebot3_example/lib/python3.10/site-packages",
+        "/home/donguk/turtlebot3_ws/install/turtlebot3_msgs/local/lib/python3.10/dist-packages",
+        "/home/donguk/turtlebot3_ws/install/rockey_work_pack/lib/python3.10/site-packages",
+        "/home/donguk/turtlebot3_ws/install/explore_lite_msgs/local/lib/python3.10/dist-packages",
+        "/home/donguk/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/local/lib/python3.10/dist-packages",
+        "/home/donguk/turtlebot3_ws/install/dynamixel_sdk/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages",
+        "/home/donguk/ros2_ws/install/dsr_common2/lib/dsr_common2/imp"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/donguk/turtlebot3_ws/build/turtlebot3_teleop",
+        "/home/donguk/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.10/site-packages",
+        "/home/donguk/turtlebot3_ws/build/turtlebot3_example",
+        "/home/donguk/turtlebot3_ws/install/turtlebot3_example/lib/python3.10/site-packages",
+        "/home/donguk/turtlebot3_ws/install/turtlebot3_msgs/local/lib/python3.10/dist-packages",
+        "/home/donguk/turtlebot3_ws/install/rockey_work_pack/lib/python3.10/site-packages",
+        "/home/donguk/turtlebot3_ws/install/explore_lite_msgs/local/lib/python3.10/dist-packages",
+        "/home/donguk/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/local/lib/python3.10/dist-packages",
+        "/home/donguk/turtlebot3_ws/install/dynamixel_sdk/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages",
+        "/home/donguk/ros2_ws/install/dsr_common2/lib/dsr_common2/imp"
+    ]
+}

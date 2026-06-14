@@ -23,6 +23,6 @@ delivery_points:
     y: -2.799
     yaw: 0.0
 
-mission_sequence: ["B", "C", "D", "A"]
+mission_sequence: ["A", "B", "C", "D"]
 max_retries: 3
 retry_wait_sec: 5.0
