@@ -90,3 +90,6 @@ ros2 run delivery_robot mission \
 | D | 4번 배달지 | (7.440, -2.799) |
 
 미션 순서: A → B → C → D
+
+## 🎥 시연 영상
+[배달 미션 로봇 시연 영상](https://drive.google.com/file/d/12GuiZZYBX-Af_TWJe1gYRbRcd3jr_dEp/view?usp=sharing)
