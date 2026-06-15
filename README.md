@@ -92,4 +92,4 @@ ros2 run delivery_robot mission \
 미션 순서: A → B → C → D
 
 ## 🎥 시연 영상
-[배달 미션 로봇 시연 영상](https://drive.google.com/file/d/12GuiZZYBX-Af_TWJe1gYRbRcd3jr_dEp/view?usp=sharing)
+[배달 미션 로봇 시연 영상](https://drive.google.com/file/d/1WyX34ntt4XfNsybfOq4yJ666OlovG3A9/view?usp=sharing)
