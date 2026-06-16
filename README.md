@@ -130,7 +130,9 @@ ros2 run delivery_robot mission \
 ## 트러블 슈팅
 ### Nav2 Goal 전송 후 콜백 미호출
 **문제**: 목적지에 도착해도 `ARRIVED` 상태로 전환되지 않고 멈춤
+
 **원인**: `Nav2Client`가 독립 노드라서 `spin`이 안 돼 콜백이 호출되지 않음
+
 **해결**: `Nav2Client`에서 Node 상속 제거 후 `MissionManager` 노드를 직접 받아서 액션 클라이언트 생성
 
 
