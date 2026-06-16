@@ -38,6 +38,28 @@ graph TD
     M -->|CSV 저장| N[delivery_metrics.csv]
 ```
 
+## 🔄 상태 머신
+
+```mermaid
+stateDiagram-v2
+    [*] --> IDLE : 시작
+
+    IDLE --> MOVING : 다음 목적지로 출발
+    MOVING --> ARRIVED : Nav2 성공
+    MOVING --> FAILED : Nav2 실패
+
+    ARRIVED --> WAITING : 도착 처리
+    WAITING --> IDLE : 3초 대기 후 다음 목적지
+
+    FAILED --> RECOVERING : 재시도 횟수 < 3
+    RECOVERING --> MOVING : 5초 후 재시도
+
+    FAILED --> IDLE : 재시도 횟수 >= 3 (스킵)
+
+    IDLE --> MISSION_DONE : 모든 목적지 완료
+    MISSION_DONE --> [*] : CSV 저장 후 종료
+```
+
 ## 🛠 기술 스택
 
 - ROS2 Humble
@@ -120,6 +142,13 @@ ros2 run delivery_robot mission \
 | D | 4번 배달지 | (7.440, -2.799) |
 
 미션 순서: A → B → C → D
+
+## 트러블 슈팅
+### Nav2 Goal 전송 후 콜백 미호출
+**문제**: 목적지에 도착해도 `ARRIVED` 상태로 전환되지 않고 멈춤
+**원인**: `Nav2Client`가 독립 노드라서 `spin`이 안 돼 콜백이 호출되지 않음
+**해결**: `Nav2Client`에서 Node 상속 제거 후 `MissionManager` 노드를 직접 받아서 액션 클라이언트 생성
+
 
 ## 🎥 시연 영상
 [배달 미션 로봇 시연 영상](https://drive.google.com/file/d/1WyX34ntt4XfNsybfOq4yJ666OlovG3A9/view?usp=sharing)
